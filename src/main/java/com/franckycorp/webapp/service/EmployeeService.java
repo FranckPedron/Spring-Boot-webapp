@@ -1,10 +1,12 @@
 package com.franckycorp.webapp.service;
 
-import com.franckycorp.webapp.model.Employee;
-import com.franckycorp.webapp.repository.EmployeeProxy;
-import lombok.Data;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import com.franckycorp.webapp.model.Employee;
+import com.franckycorp.webapp.repository.EmployeeProxy;
+
+import lombok.Data;
 
 @Data
 @Service
@@ -22,17 +24,17 @@ public class EmployeeService {
     }
 
     public void deleteEmployee(final int id) {
-        employeeProxy.deleteEmployee(id);;
+        employeeProxy.deleteEmployee(id);
     }
 
     public Employee saveEmployee(Employee employee) {
         Employee savedEmployee;
 
-        // Règle de gestion : Le nom de famille doit être mis en majuscule.
+        // Functional rule : Last name must be capitalized.
         employee.setLastName(employee.getLastName().toUpperCase());
 
         if(employee.getId() == null) {
-            // Si l'id est nul, alors c'est un nouvel employé.
+            // If id is null, then it is a new employee.
             savedEmployee = employeeProxy.createEmployee(employee);
         } else {
             savedEmployee = employeeProxy.updateEmployee(employee);
