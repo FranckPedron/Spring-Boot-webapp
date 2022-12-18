@@ -42,8 +42,8 @@ public class EmployeeProxy {
 
     /**
      *
-     * @param e
-     * @return
+     * @param e An employee
+     * @return A new Object Employee
      */
     public Employee createEmployee(Employee e) {
         String baseApiUrl = props.getApiUrl();
